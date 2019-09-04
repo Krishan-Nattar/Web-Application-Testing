@@ -10,15 +10,29 @@ function App() {
   const [strikes, setStrikes] = useState(0);
 
   const handleStrike = () => {
-    console.log('strike')
+    if(strikes<2){
+      setStrikes(strikes+1);
+    } else{
+      setStrikes(0);
+      setBalls(0);
+    }
+    
   }
 
   const handleBall = () => {
-    console.log('ball')
+    if(balls===3){
+      setBalls(0);
+      setStrikes(0);
+    } else{
+      setBalls(balls+1);
+    }
+    
   }
 
   const handleFoul = () => {
-    console.log('foul')
+    if(strikes<2){
+      setStrikes(strikes+1);
+    }
   }
 
   const handleHit = () => {
@@ -27,7 +41,7 @@ function App() {
 
   return (
     <div className="App">
-      Web Application Testing
+      At Bat:
       <Display balls={balls} strikes={strikes} />
       <Dashboard handleStrike={handleStrike} handleBall={handleBall} handleFoul={handleFoul} handleHit={handleHit} />
 

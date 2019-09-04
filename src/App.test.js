@@ -110,7 +110,7 @@ describe("<App />", () => {
     const wrapper = rtl.render(<App />);
     const ballButton = wrapper.getByText(/^ball$/i);
     const hitButton = wrapper.getByText(/^hit$/i);
-    
+
     wrapper.getByText(/balls: 0/i);
     rtl.fireEvent.click(ballButton);
     wrapper.getByText(/balls: 1/i);

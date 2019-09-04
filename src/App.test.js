@@ -57,6 +57,8 @@ describe("<App />", () => {
     wrapper.getByText(/balls: 0/i);
   });
 
+
+
   it("Resets balls after 3 strikes", () => {
     const wrapper = rtl.render(<App />);
     const strikeButton = wrapper.getByText(/^strike$/i);
@@ -120,5 +122,37 @@ describe("<App />", () => {
     wrapper.getByText(/balls: 3/i);
     rtl.fireEvent.click(hitButton);
     wrapper.getByText(/balls: 0/i);
+  });
+
+  it("Increments outs after 3 strikes", () => {
+    const wrapper = rtl.render(<App />);
+    const strikeButton = wrapper.getByText(/^strike$/i);
+
+    wrapper.getByText(/outs: 0/i);
+    rtl.fireEvent.click(strikeButton);
+    wrapper.getByText(/outs: 0/i);
+    rtl.fireEvent.click(strikeButton);
+    wrapper.getByText(/outs: 0/i);
+    rtl.fireEvent.click(strikeButton);
+    wrapper.getByText(/outs: 1/i);
+  });
+
+  it("Resets outs after 3 strikeouts", () => {
+    const wrapper = rtl.render(<App />);
+    const strikeButton = wrapper.getByText(/^strike$/i);
+
+    wrapper.getByText(/outs: 0/i);
+    rtl.fireEvent.click(strikeButton);
+    rtl.fireEvent.click(strikeButton);
+    rtl.fireEvent.click(strikeButton);
+    wrapper.getByText(/outs: 1/i);
+    rtl.fireEvent.click(strikeButton);
+    rtl.fireEvent.click(strikeButton);
+    rtl.fireEvent.click(strikeButton);
+    wrapper.getByText(/outs: 2/i);
+    rtl.fireEvent.click(strikeButton);
+    rtl.fireEvent.click(strikeButton);
+    rtl.fireEvent.click(strikeButton);
+    wrapper.getByText(/outs: 0/i);
   });
 });

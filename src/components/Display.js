@@ -5,6 +5,7 @@ const Display = (props) => {
     <div>
         <p>Balls: {props.balls}</p>
         <p>Strikes: {props.strikes}</p>
+        <p>Outs: {props.outs}</p>
     </div> 
     );
 }
